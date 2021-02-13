@@ -76,9 +76,16 @@ while True:
         video = lt.getElement(videos, 1)
         primero = (video['title'], video['channel_title'], video['trending_date'], 
         video['country'], video['views'], video['likes'], video['dislikes'])
-        print(primero)
+        print("Caracteristicas del primer video cargado: ")
+        print("Titulo: " + primero[0])
+        print("Canal: " + primero[1])
+        print("Fecha en que estuvo Trending: " + primero[2])
+        print("País: " + primero[3])
+        print("Visitas: " + primero[4])
+        print("Likes: " + primero[5])
+        print("Dislikes: " + primero[6])
 
-        print(catalog['id_category']['first'])
+        print(catalog['id_category'])
 
     elif int(inputs[0]) == 2:
         pass
