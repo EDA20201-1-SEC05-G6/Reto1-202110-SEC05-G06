@@ -85,7 +85,9 @@ while True:
         print("Likes: " + primero[5])
         print("Dislikes: " + primero[6])
 
-        print(lt.getElement(catalog['id_category'], 1))
+        for x in range(1, lt.size(catalog['id_category'])+1):
+            elemento= lt.getElement(catalog['id_category'], x)
+            print(elemento["id\tname"])
 
     elif int(inputs[0]) == 2:
         pass
