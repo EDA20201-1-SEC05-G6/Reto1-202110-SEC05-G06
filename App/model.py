@@ -51,6 +51,15 @@ def newCatalog():
 
     return catalog
 
+def newCatalog():
+
+    catalog = {'videos': None, 'categorias': None,}
+
+    catalog['videos'] = lt.newList('ARRAY_LIST')
+    catalog['categorias'] = lt.newList('ARRAY_LIST')
+
+    return catalog
+
 # Funciones para agregar informacion al catalogo
 def addVideo(catalog, video):
     # Se adiciona el libro a la lista de libros
@@ -76,5 +85,6 @@ def addCategory(catalog, category):
 # Funciones de consulta
 
 # Funciones utilizadas para comparar elementos dentro de una lista
+
 
 # Funciones de ordenamiento

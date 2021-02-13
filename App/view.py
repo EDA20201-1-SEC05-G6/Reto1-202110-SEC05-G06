@@ -58,6 +58,13 @@ def loadData(catalog):
     controller.loadData(catalog)
 
 
+def initCatalog():
+    """
+    Inicializa el catalogo de videos
+    """
+    return controller.initCatalog()
+
+
 catalog = None
 
 """
