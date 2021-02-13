@@ -46,17 +46,8 @@ def newCatalog():
     catalog = {'videos': None,
                'id_category':None}
 
-    catalog['videos'] = lt.newList()
-    catalog['id_category'] = lt.newList()
-
-    return catalog
-
-def newCatalog():
-
-    catalog = {'videos': None, 'categorias': None,}
-
-    catalog['videos'] = lt.newList('ARRAY_LIST')
-    catalog['categorias'] = lt.newList('ARRAY_LIST')
+    catalog['videos'] = lt.newList("ARRAY_LIST")
+    catalog['id_category'] = lt.newList("ARRAY_LIST")
 
     return catalog
 
