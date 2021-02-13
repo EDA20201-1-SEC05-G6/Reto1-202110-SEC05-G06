@@ -84,7 +84,7 @@ while True:
         print("Visitas: " + primero[4])
         print("Likes: " + primero[5])
         print("Dislikes: " + primero[6])
-
+        print("Categorias de videos: ")
         for x in range(1, lt.size(catalog['id_category'])+1):
             elemento= lt.getElement(catalog['id_category'], x)
             print(elemento["id\tname"])
