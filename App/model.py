@@ -37,12 +37,30 @@ los mismos.
 
 # Construccion de modelos
 
+def newCatalog():
+
+    catalog = {'videos': None, 'categorias': None,}
+
+    catalog['videos'] = lt.newList('ARRAY_LIST')
+    catalog['categorias'] = lt.newList('ARRAY_LIST')
+
+    return catalog
+
 # Funciones para agregar informacion al catalogo
+
+def addVideos(catalog, video):
+
+    lt.addLast(catalog['videos'], video)
+
+def addCategoria(catalog, categoria):
+
+    lt.addLast(catalog['categorias'], categoria)
 
 # Funciones para creacion de datos
 
 # Funciones de consulta
 
 # Funciones utilizadas para comparar elementos dentro de una lista
+
 
 # Funciones de ordenamiento
