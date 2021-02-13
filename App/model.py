@@ -36,9 +36,41 @@ los mismos.
 """
 
 # Construccion de modelos
+def newCatalog():
+    """
+    Inicializa el catálogo de videos. Crea una lista vacia para guardar
+    todos los videos, adicionalmente, crea una lista vacia para los autores,
+    una lista vacia para los generos y una lista vacia para la asociación
+    generos y libros. Retorna el catalogo inicializado.
+    """
+    catalog = {'videos': None,
+               'id_category':None}
+
+    catalog['videos'] = lt.newList()
+    catalog['id_category'] = lt.newList()
+
+    return catalog
 
 # Funciones para agregar informacion al catalogo
+def addVideo(catalog, video):
+    # Se adiciona el libro a la lista de libros
+    lt.addLast(catalog['videos'], video)
+    # Se obtienen los autores del libro
+    ##authors = book['authors'].split(",")
+    # Cada autor, se crea en la lista de libros del catalogo, y se
+    # crea un libro en la lista de dicho autor (apuntador al libro)
+    """for author in authors:
+        addBookAuthor(catalog, author.strip(), book)"""
 
+def addCategory(catalog, category):
+    # Se adiciona el libro a la lista de libros
+    lt.addLast(catalog['id_category'], category)
+    # Se obtienen los autores del libro
+    ##authors = book['authors'].split(",")
+    # Cada autor, se crea en la lista de libros del catalogo, y se
+    # crea un libro en la lista de dicho autor (apuntador al libro)
+    """for author in authors:
+        addBookAuthor(catalog, author.strip(), book)"""
 # Funciones para creacion de datos
 
 # Funciones de consulta
