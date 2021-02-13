@@ -78,7 +78,7 @@ while True:
         video['country'], video['views'], video['likes'], video['dislikes'])
         print(primero)
 
-        print(catalog['categorias']['first'])
+        print(catalog['id_category']['first'])
 
     elif int(inputs[0]) == 2:
         pass
