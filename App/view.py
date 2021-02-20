@@ -44,11 +44,11 @@ def printMenu():
     print("0- Salir")
 
 
-def initCatalog():
+def initCatalog(estructura):
     """
     Inicializa el catalogo de videos
     """
-    return controller.initCatalog()
+    return controller.initCatalog(estructura)
 
 
 def loadData(catalog):
@@ -56,14 +56,6 @@ def loadData(catalog):
     Carga los libros en la estructura de datos
     """
     controller.loadData(catalog)
-
-
-def initCatalog():
-    """
-    Inicializa el catalogo de videos
-    """
-    return controller.initCatalog()
-
 
 catalog = None
 
@@ -74,8 +66,22 @@ while True:
     printMenu()
     inputs = input('Seleccione una opción para continuar\n')
     if int(inputs[0]) == 1:
+
+        print("Escoja la estructura de datsos que desa utilizar para almacenamiento del repositorio")
+        print("1. Lista por arreglos")
+        print("2. Lista Enlazada")
+        estructuraDatos= int(input())
+
+        if estructuraDatos == 1:
+            estructura= "ARRAY_LIST"
+        
+        elif estructuraDatos == 2:
+                estructura= "LINKED_LIST"
+        else:
+            print("Por favor escoja una opciòn válida")        
+
         print("Cargando información de los archivos ....")
-        catalog = initCatalog()
+        catalog = initCatalog(estructura)
         loadData(catalog)
         print('Videos cargados: ' + str(lt.size(catalog['videos'])))
         

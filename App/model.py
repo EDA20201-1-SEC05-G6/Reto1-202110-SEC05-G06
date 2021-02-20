@@ -36,7 +36,7 @@ los mismos.
 """
 
 # Construccion de modelos
-def newCatalog():
+def newCatalog(estructura):
     """
     Inicializa el catálogo de videos. Crea una lista vacia para guardar
     todos los videos, adicionalmente, crea una lista vacia para los autores,
@@ -46,8 +46,8 @@ def newCatalog():
     catalog = {'videos': None,
                'id_category':None}
 
-    catalog['videos'] = lt.newList("ARRAY_LIST")
-    catalog['id_category'] = lt.newList("ARRAY_LIST")
+    catalog['videos'] = lt.newList(estructura)
+    catalog['id_category'] = lt.newList(estructura)
 
     return catalog
 
