@@ -27,7 +27,9 @@
 
 import config as cf
 from DISClib.ADT import list as lt
-from DISClib.Algorithms.Sorting import shellsort as sa
+from DISClib.Algorithms.Sorting import shellsort as sha
+from DISClib.Algorithms.Sorting import insertionsort as ia
+from DISClib.Algorithms.Sorting import selectionsort as sa
 assert cf
 
 """
@@ -75,16 +77,29 @@ def crearSubList(lista, tamanhoMuestra):
 
 # Funciones utilizadas para comparar elementos dentro de una lista
 
-
-# Funciones de ordenamiento
-
 def cmpVideosByViews(video1, video2):
 
     valor= None
-    if video1["views"] < video2["views"]:
+    if int(video1["views"]) < int(video2["views"]):
         valor= True
     
     else:
         valor= False
 
     return valor
+
+# Funciones de ordenamiento
+
+def insertionSort(sublista):
+
+    ia.sort(sublista, cmpVideosByViews)
+
+
+def selectionSort(sublista):
+
+    sa.sort(sublista, cmpVideosByViews)
+
+
+def shellSort(sublista):
+
+    sha.sort(sublista, cmpVideosByViews)

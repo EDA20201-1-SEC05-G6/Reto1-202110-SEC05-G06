@@ -61,6 +61,18 @@ def crearSubList(lista, tamanhoMuestra):
 
     return controller.crearSubList(lista, tamanhoMuestra)
 
+def insertionSort(sublista):
+
+    controller.insertionSort(sublista)
+
+def selectionSort(sublista):
+
+    controller.selectionSort(sublista)
+
+def shellSort(sublista):
+
+    controller.shellSort(sublista)
+
 catalog = None
 
 """
@@ -71,7 +83,7 @@ while True:
     inputs = input('Seleccione una opción para continuar\n')
     if int(inputs[0]) == 1:
 
-        print("Escoja la estructura de datsos que desa utilizar para almacenamiento del repositorio")
+        print("Escoja la estructura de datos que desa utilizar para almacenamiento del repositorio: ")
         print("1. Lista por arreglos")
         print("2. Lista Enlazada")
         estructuraDatos= int(input())
@@ -141,8 +153,47 @@ while True:
         
         else:
 
-            sublista= crearSubList(lista, tamanhoMuestra)+
-            
+            sublista= crearSubList(lista, tamanhoMuestra)
+
+            i= 1
+
+            while i <= 10:
+
+                video= lt.getElement(sublista, i)
+                print(video["views"])
+
+                i+= 1
+
+            print("Seleccione el tipo de algoritmo de ordenamiento iterativo que desea utilizar: ")
+            print("1. Selection Sort")
+            print("2. Insertion Sort")
+            print("3. Shell Sort")
+            opcion= int(input())
+
+            if opcion == 1:
+
+                selectionSort(sublista)
+
+            elif opcion == 2:
+
+                insertionSort(sublista)
+
+            elif opcion == 3:
+
+                shellSort(sublista)
+
+            else:
+                print("Por favor seleccione una opción válida")
+
+            i= 1
+
+            while i <= 10:
+
+                video= lt.getElement(sublista, i)
+                print(video["views"])
+
+                i+= 1
+
 
     else:
         sys.exit(0)

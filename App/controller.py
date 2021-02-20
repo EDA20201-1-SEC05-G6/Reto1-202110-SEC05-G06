@@ -70,6 +70,21 @@ def loadCategory(catalog):
 
 # Funciones de ordenamiento
 
+def insertionSort(sublista):
+
+    model.insertionSort(sublista)
+
+
+def selectionSort(sublista):
+
+    model.selectionSort(sublista)
+
+
+def shellSort(sublista):
+
+    model.shellSort(sublista)
+
+
 # Funciones de consulta sobre el catálogo
 
 def crearSubList(lista, tamanhoMuestra):
