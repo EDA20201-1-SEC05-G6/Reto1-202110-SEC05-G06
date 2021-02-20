@@ -72,17 +72,17 @@ def loadCategory(catalog):
 
 def insertionSort(sublista):
 
-    model.insertionSort(sublista)
+    return model.insertionSort(sublista)
 
 
 def selectionSort(sublista):
 
-    model.selectionSort(sublista)
+    return model.selectionSort(sublista)
 
 
 def shellSort(sublista):
 
-    model.shellSort(sublista)
+    return model.shellSort(sublista)
 
 
 # Funciones de consulta sobre el catálogo

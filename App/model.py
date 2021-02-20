@@ -26,6 +26,7 @@
 
 
 import config as cf
+import time
 from DISClib.ADT import list as lt
 from DISClib.Algorithms.Sorting import shellsort as sha
 from DISClib.Algorithms.Sorting import insertionsort as ia
@@ -92,14 +93,36 @@ def cmpVideosByViews(video1, video2):
 
 def insertionSort(sublista):
 
+    startTime= time.process_time()
+    
     ia.sort(sublista, cmpVideosByViews)
 
+    stopTime= time.process_time()
+
+    totalTime_msc= (stopTime - startTime) * 1000
+
+    return totalTime_msc
 
 def selectionSort(sublista):
 
-    sa.sort(sublista, cmpVideosByViews)
+    startTime= time.process_time()
 
+    sa.sort(sublista, cmpVideosByViews)
+    
+    stopTime= time.process_time()
+
+    totalTime_msc= (stopTime - startTime) * 1000
+
+    return totalTime_msc
 
 def shellSort(sublista):
 
+    startTime= time.process_time()
+
     sha.sort(sublista, cmpVideosByViews)
+
+    stopTime= time.process_time()
+
+    totalTime_msc= (stopTime - startTime) * 1000
+
+    return totalTime_msc

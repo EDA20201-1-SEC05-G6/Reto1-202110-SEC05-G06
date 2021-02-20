@@ -63,15 +63,15 @@ def crearSubList(lista, tamanhoMuestra):
 
 def insertionSort(sublista):
 
-    controller.insertionSort(sublista)
+    return controller.insertionSort(sublista)
 
 def selectionSort(sublista):
 
-    controller.selectionSort(sublista)
+    return controller.selectionSort(sublista)
 
 def shellSort(sublista):
 
-    controller.shellSort(sublista)
+    return controller.shellSort(sublista)
 
 catalog = None
 
@@ -155,15 +155,6 @@ while True:
 
             sublista= crearSubList(lista, tamanhoMuestra)
 
-            i= 1
-
-            while i <= 10:
-
-                video= lt.getElement(sublista, i)
-                print(video["views"])
-
-                i+= 1
-
             print("Seleccione el tipo de algoritmo de ordenamiento iterativo que desea utilizar: ")
             print("1. Selection Sort")
             print("2. Insertion Sort")
@@ -172,27 +163,20 @@ while True:
 
             if opcion == 1:
 
-                selectionSort(sublista)
+                print(selectionSort(sublista))
 
             elif opcion == 2:
 
-                insertionSort(sublista)
+                print(insertionSort(sublista))
 
             elif opcion == 3:
 
-                shellSort(sublista)
+                print(shellSort(sublista))
 
             else:
                 print("Por favor seleccione una opción válida")
 
-            i= 1
 
-            while i <= 10:
-
-                video= lt.getElement(sublista, i)
-                print(video["views"])
-
-                i+= 1
 
 
     else:
