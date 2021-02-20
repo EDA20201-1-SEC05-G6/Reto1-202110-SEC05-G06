@@ -37,7 +37,7 @@ operación solicitada
 def printMenu():
     print("Bienvenido")
     print("1- Cargar información en el catálogo")
-    print("2- Requerimiento 1")
+    print("2- Videos con mas views en un país correspondientes a una categoría")
     print("3- Requerimiento 2")
     print("4- Requerimiento 4")
     print("5- Requerimiento 5")
@@ -56,6 +56,10 @@ def loadData(catalog):
     Carga los libros en la estructura de datos
     """
     controller.loadData(catalog)
+
+def crearSubList(lista, tamanhoMuestra):
+
+    return controller.crearSubList(lista, tamanhoMuestra)
 
 catalog = None
 
@@ -128,7 +132,17 @@ while True:
        
 
     elif int(inputs[0]) == 2:
-        pass
+
+        tamanhoMuestra= int(input("Ingrese el tamaño de la muestra que quiere analizar: "))
+        lista= catalog["videos"]
+
+        if tamanhoMuestra > lt.size(lista):
+             print("Por favor escoja un tamaño de muestra menor o igual al número total de videos")
+        
+        else:
+
+            sublista= crearSubList(lista, tamanhoMuestra)+
+            
 
     else:
         sys.exit(0)
