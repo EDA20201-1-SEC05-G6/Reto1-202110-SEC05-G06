@@ -74,33 +74,58 @@ while True:
 
         if estructuraDatos == 1:
             estructura= "ARRAY_LIST"
+
+            print("Cargando información de los archivos ....")
+            catalog = initCatalog(estructura)
+            loadData(catalog)
+            print('Videos cargados: ' + str(lt.size(catalog['videos'])))
+            
+            videos = catalog['videos']
+            video = lt.getElement(videos, 1)
+            primero = (video['title'], video['channel_title'], video['trending_date'], 
+            video['country'], video['views'], video['likes'], video['dislikes'])
+            print("Caracteristicas del primer video cargado: ")
+            print("Titulo: " + primero[0])
+            print("Canal: " + primero[1])
+            print("Fecha en que estuvo Trending: " + primero[2])
+            print("País: " + primero[3])
+            print("Visitas: " + primero[4])
+            print("Likes: " + primero[5])
+            print("Dislikes: " + primero[6])
+            print("Categorias de videos: ")
+            for x in range(1, lt.size(catalog['id_category'])+1):
+                elemento= lt.getElement(catalog['id_category'], x)
+                print(elemento["id\tname"])
         
         elif estructuraDatos == 2:
-                estructura= "LINKED_LIST"
+            estructura= "LINKED_LIST"
+
+            print("Cargando información de los archivos ....")
+            catalog = initCatalog(estructura)
+            loadData(catalog)
+            print('Videos cargados: ' + str(lt.size(catalog['videos'])))
+                
+            videos = catalog['videos']
+            video = lt.getElement(videos, 1)
+            primero = (video['title'], video['channel_title'], video['trending_date'], 
+            video['country'], video['views'], video['likes'], video['dislikes'])
+            print("Caracteristicas del primer video cargado: ")
+            print("Titulo: " + primero[0])
+            print("Canal: " + primero[1])
+            print("Fecha en que estuvo Trending: " + primero[2])
+            print("País: " + primero[3])
+            print("Visitas: " + primero[4])
+            print("Likes: " + primero[5])
+            print("Dislikes: " + primero[6])
+            print("Categorias de videos: ")
+            for x in range(1, lt.size(catalog['id_category'])+1):
+                elemento= lt.getElement(catalog['id_category'], x)
+                print(elemento["id\tname"])
+
         else:
             print("Por favor escoja una opciòn válida")        
 
-        print("Cargando información de los archivos ....")
-        catalog = initCatalog(estructura)
-        loadData(catalog)
-        print('Videos cargados: ' + str(lt.size(catalog['videos'])))
-        
-        videos = catalog['videos']
-        video = lt.getElement(videos, 1)
-        primero = (video['title'], video['channel_title'], video['trending_date'], 
-        video['country'], video['views'], video['likes'], video['dislikes'])
-        print("Caracteristicas del primer video cargado: ")
-        print("Titulo: " + primero[0])
-        print("Canal: " + primero[1])
-        print("Fecha en que estuvo Trending: " + primero[2])
-        print("País: " + primero[3])
-        print("Visitas: " + primero[4])
-        print("Likes: " + primero[5])
-        print("Dislikes: " + primero[6])
-        print("Categorias de videos: ")
-        for x in range(1, lt.size(catalog['id_category'])+1):
-            elemento= lt.getElement(catalog['id_category'], x)
-            print(elemento["id\tname"])
+       
 
     elif int(inputs[0]) == 2:
         pass
