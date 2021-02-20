@@ -37,7 +37,26 @@ operación solicitada
 def printMenu():
     print("Bienvenido")
     print("1- Cargar información en el catálogo")
-    print("2- ")
+    print("2- Requerimiento 1")
+    print("3- Requerimiento 2")
+    print("4- Requerimiento 4")
+    print("5- Requerimiento 5")
+    print("0- Salir")
+
+
+def initCatalog():
+    """
+    Inicializa el catalogo de videos
+    """
+    return controller.initCatalog()
+
+
+def loadData(catalog):
+    """
+    Carga los libros en la estructura de datos
+    """
+    controller.loadData(catalog)
+
 
 def initCatalog():
     """
@@ -59,7 +78,23 @@ while True:
         catalog = initCatalog()
         loadData(catalog)
         print('Videos cargados: ' + str(lt.size(catalog['videos'])))
-        print("Categorias: "+ str(catalog['categorías'])
+        
+        videos = catalog['videos']
+        video = lt.getElement(videos, 1)
+        primero = (video['title'], video['channel_title'], video['trending_date'], 
+        video['country'], video['views'], video['likes'], video['dislikes'])
+        print("Caracteristicas del primer video cargado: ")
+        print("Titulo: " + primero[0])
+        print("Canal: " + primero[1])
+        print("Fecha en que estuvo Trending: " + primero[2])
+        print("País: " + primero[3])
+        print("Visitas: " + primero[4])
+        print("Likes: " + primero[5])
+        print("Dislikes: " + primero[6])
+        print("Categorias de videos: ")
+        for x in range(1, lt.size(catalog['id_category'])+1):
+            elemento= lt.getElement(catalog['id_category'], x)
+            print(elemento["id\tname"])
 
     elif int(inputs[0]) == 2:
         pass
@@ -67,3 +102,4 @@ while True:
     else:
         sys.exit(0)
 sys.exit(0)
+#Paths de los archivos y formatos de los prints
