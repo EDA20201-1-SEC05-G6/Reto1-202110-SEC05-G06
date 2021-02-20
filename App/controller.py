@@ -71,3 +71,7 @@ def loadCategory(catalog):
 # Funciones de ordenamiento
 
 # Funciones de consulta sobre el catálogo
+
+def crearSubList(lista, tamanhoMuestra):
+
+    return model.crearSubList(lista, tamanhoMuestra)

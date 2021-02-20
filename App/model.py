@@ -36,6 +36,7 @@ los mismos.
 """
 
 # Construccion de modelos
+
 def newCatalog(estructura):
     """
     Inicializa el catálogo de videos. Crea una lista vacia para guardar
@@ -52,30 +53,38 @@ def newCatalog(estructura):
     return catalog
 
 # Funciones para agregar informacion al catalogo
+
 def addVideo(catalog, video):
-    # Se adiciona el libro a la lista de libros
+
     lt.addLast(catalog['videos'], video)
-    # Se obtienen los autores del libro
-    ##authors = book['authors'].split(",")
-    # Cada autor, se crea en la lista de libros del catalogo, y se
-    # crea un libro en la lista de dicho autor (apuntador al libro)
-    """for author in authors:
-        addBookAuthor(catalog, author.strip(), book)"""
+
+
 
 def addCategory(catalog, category):
-    # Se adiciona el libro a la lista de libros
+
     lt.addLast(catalog['id_category'], category)
-    # Se obtienen los autores del libro
-    ##authors = book['authors'].split(",")
-    # Cada autor, se crea en la lista de libros del catalogo, y se
-    # crea un libro en la lista de dicho autor (apuntador al libro)
-    """for author in authors:
-        addBookAuthor(catalog, author.strip(), book)"""
+
+  
 # Funciones para creacion de datos
 
 # Funciones de consulta
+def crearSubList(lista, tamanhoMuestra):
+
+   return lt.subList(lista, 1, tamanhoMuestra)
+
 
 # Funciones utilizadas para comparar elementos dentro de una lista
 
 
 # Funciones de ordenamiento
+
+def cmpVideosByViews(video1, video2):
+
+    valor= None
+    if video1["views"] < video2["views"]:
+        valor= True
+    
+    else:
+        valor= False
+
+    return valor
