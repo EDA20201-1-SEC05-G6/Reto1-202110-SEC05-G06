@@ -31,6 +31,8 @@ from DISClib.ADT import list as lt
 from DISClib.Algorithms.Sorting import shellsort as sha
 from DISClib.Algorithms.Sorting import insertionsort as ia
 from DISClib.Algorithms.Sorting import selectionsort as sa
+from DISClib.Algorithms.Sorting import quicksort as qk
+from DISClib.Algorithms.Sorting import mergesort as mg
 assert cf
 
 """
@@ -126,3 +128,30 @@ def shellSort(sublista):
     totalTime_msc= (stopTime - startTime) * 1000
 
     return totalTime_msc
+
+def quickSort(sublista):
+
+    startTime= time.process_time()
+
+    qk.sort(sublista, cmpVideosByViews)
+
+    stopTime= time.process_time()
+
+    totalTime_msc= (stopTime - startTime) * 1000
+
+    return totalTime_msc
+
+
+def mergeSort(sublista):
+
+    startTime= time.process_time()
+
+    mg.sort(sublista, cmpVideosByViews)
+
+    stopTime= time.process_time()
+
+    totalTime_msc= (stopTime - startTime) * 1000
+
+    return totalTime_msc
+
+

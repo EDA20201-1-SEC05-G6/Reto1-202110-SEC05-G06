@@ -74,15 +74,21 @@ def insertionSort(sublista):
 
     return model.insertionSort(sublista)
 
-
 def selectionSort(sublista):
 
     return model.selectionSort(sublista)
 
-
 def shellSort(sublista):
 
     return model.shellSort(sublista)
+
+def quickSort(sublista):
+
+    return model.quickSort(sublista)
+
+def mergeSort(sublista):
+
+    return model.mergeSort(sublista)
 
 
 # Funciones de consulta sobre el catálogo
