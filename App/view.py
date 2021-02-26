@@ -37,7 +37,7 @@ operación solicitada
 def printMenu():
     print("Bienvenido")
     print("1- Cargar información en el catálogo")
-    print("2- Videos con mas views en un país correspondientes a una categoría")
+    print("2- Consultar videos con mas views en un país correspondientes a una categoría")
     print("3- Requerimiento 2")
     print("4- Requerimiento 4")
     print("5- Requerimiento 5")
@@ -72,6 +72,14 @@ def selectionSort(sublista):
 def shellSort(sublista):
 
     return controller.shellSort(sublista)
+
+def quickSort(sublista):
+
+    return controller.quickSort(sublista)
+
+def mergeSort(sublista):
+
+    return controller.mergeSort(sublista)
 
 catalog = None
 
@@ -159,6 +167,8 @@ while True:
             print("1. Selection Sort")
             print("2. Insertion Sort")
             print("3. Shell Sort")
+            print("4. Quick Sort")
+            print("5. Merge Sort")
             opcion= int(input())
 
             if opcion == 1:
@@ -172,6 +182,14 @@ while True:
             elif opcion == 3:
 
                 print(shellSort(sublista))
+            
+            elif opcion == 4:
+                
+                print(quickSort(sublista))
+
+            elif opcion == 5:
+
+                print(mergeSort(sublista))
 
             else:
                 print("Por favor seleccione una opción válida")
