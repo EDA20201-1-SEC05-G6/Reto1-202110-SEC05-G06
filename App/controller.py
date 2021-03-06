@@ -96,3 +96,11 @@ def mergeSort(sublista):
 def crearSubList(lista, tamanhoMuestra):
 
     return model.crearSubList(lista, tamanhoMuestra)
+
+def consultar_id(lista, categoria):
+
+    return model.consultar_id(lista, categoria)
+
+def filtrar_req1(lista, sublista, id, pais):
+
+    return model.filtrar_req1(lista,sublista, id, pais)

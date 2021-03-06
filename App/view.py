@@ -61,25 +61,13 @@ def crearSubList(lista, tamanhoMuestra):
 
     return controller.crearSubList(lista, tamanhoMuestra)
 
-def insertionSort(sublista):
+def consultar_id(lista, categoria):
 
-    return controller.insertionSort(sublista)
+    return controller.consultar_id(lista, categoria)
 
-def selectionSort(sublista):
+def filtrar_req1(lista, sublista, id, pais):
 
-    return controller.selectionSort(sublista)
-
-def shellSort(sublista):
-
-    return controller.shellSort(sublista)
-
-def quickSort(sublista):
-
-    return controller.quickSort(sublista)
-
-def mergeSort(sublista):
-
-    return controller.mergeSort(sublista)
+    return controller.filtrar_req1(lista, sublista, id, pais)
 
 catalog = None
 
@@ -111,15 +99,15 @@ while True:
             print("Caracteristicas del primer video cargado: ")
             print("Titulo: " + primero[0])
             print("Canal: " + primero[1])
-            print("Fecha en que estuvo Trending: " + primero[2])
+            print("Fecha en que estuvo Trending: " + str(primero[2]))
             print("País: " + primero[3])
-            print("Visitas: " + primero[4])
-            print("Likes: " + primero[5])
-            print("Dislikes: " + primero[6])
+            print("Visitas: " + str (primero[4]))
+            print("Likes: " + str (primero[5]))
+            print("Dislikes: " + str (primero[6]))
             print("Categorias de videos: ")
             for x in range(1, lt.size(catalog['id_category'])+1):
                 elemento= lt.getElement(catalog['id_category'], x)
-                print(elemento["id\tname"])
+                print(str (elemento["id"]) + "\t" + elemento["category"])
         
         elif estructuraDatos == 2:
             estructura= "LINKED_LIST"
@@ -144,60 +132,50 @@ while True:
             print("Categorias de videos: ")
             for x in range(1, lt.size(catalog['id_category'])+1):
                 elemento= lt.getElement(catalog['id_category'], x)
-                print(elemento["id\tname"])
+                print(str (elemento["id"]) + "\t" + elemento["category"])
 
         else:
             print("Por favor escoja una opciòn válida")        
 
-       
+
 
     elif int(inputs[0]) == 2:
+       
+       lista = catalog["videos"]
 
-        tamanhoMuestra= int(input("Ingrese el tamaño de la muestra que quiere analizar: "))
-        lista= catalog["videos"]
+       sublista = lt.newList(datastructure="ARRAY_LIST")
 
-        if tamanhoMuestra > lt.size(lista):
-             print("Por favor escoja un tamaño de muestra menor o igual al número total de videos")
+       num_videos = int (input("Ingrese el número de videos que quiere que se presenten en su ranking-> "))
+       if num_videos > lt.size(lista): print("El número ingresado excede el número total de videos")
         
-        else:
-
-            sublista= crearSubList(lista, tamanhoMuestra)
-
-            print("Seleccione el tipo de algoritmo de ordenamiento iterativo que desea utilizar: ")
-            print("1. Selection Sort")
-            print("2. Insertion Sort")
-            print("3. Shell Sort")
-            print("4. Quick Sort")
-            print("5. Merge Sort")
-            opcion= int(input())
-
-            if opcion == 1:
-
-                print(selectionSort(sublista))
-
-            elif opcion == 2:
-
-                print(insertionSort(sublista))
-
-            elif opcion == 3:
-
-                print(shellSort(sublista))
-            
-            elif opcion == 4:
-                
-                print(quickSort(sublista))
-
-            elif opcion == 5:
-
-                print(mergeSort(sublista))
-
-            else:
-                print("Por favor seleccione una opción válida")
-
-
-
+       else:
+           categoria = input ("Ingrese la categoría que quiere consultar-> ")
+           id = consultar_id(catalog["id_category"], categoria)
+           if id == -1: print("Por favor ingrese una categoría válida")
+           else:
+               pais = input("Ingrese el país que quiere consultar-> ")
+               filtrar_req1(lista, sublista, id, pais)
+               
+               impresos = []
+               pos = 1
+               num = 1
+               while num in range (1, num_videos + 1) and lt.getElement(sublista, pos) != None:
+                   elemento = lt.getElement(sublista, pos)
+                   if elemento["title"] not in impresos:
+                       print("\n\nvideo " + str(num))
+                       print("trending date: " + str(elemento["trending_date"]))
+                       print("title: " + elemento["title"])
+                       print("channel title: " + elemento["channel_title"])
+                       print("publish time: " + str (elemento["publish_time"]))
+                       print("views: " + str(elemento["views"]))
+                       print("likes: " + str(elemento["likes"]))
+                       print("dislikes: " + str(elemento["dislikes"]))
+                       impresos.append(elemento["title"])
+                       num += 1
+                   pos += 1
 
     else: 
         sys.exit(0)
 sys.exit(0)
-#Paths de los archivos y formatos de los prints
+
+#REVISAR PUBLISH TIME REQ 1!!!!

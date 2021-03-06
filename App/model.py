@@ -27,6 +27,7 @@
 
 import config as cf
 import time
+from datetime import datetime
 from DISClib.ADT import list as lt
 from DISClib.Algorithms.Sorting import shellsort as sha
 from DISClib.Algorithms.Sorting import insertionsort as ia
@@ -60,14 +61,34 @@ def newCatalog(estructura):
 # Funciones para agregar informacion al catalogo
 
 def addVideo(catalog, video):
+    
+    dic = {}
+    dic ["video_id"] = video ["video_id"]
+    dic ["trending_date"] = datetime.strptime (video ["trending_date"], "%y.%d.%m").date ()
+    dic ["title"] = video ["title"]
+    dic ["channel_title"] = video ["channel_title"]
+    dic ["category_id"] = int (video ["category_id"])
+    dic ["publish_time"] = datetime.strptime (video ["publish_time"], "%Y-%m-%dT%H:%M:%S.%fZ")
+    dic ["tags"] = video ["tags"]
+    dic ["views"] = int (video ["views"])
+    dic ["likes"] = int (video ["likes"])
+    dic ["dislikes"] = int (video ["dislikes"])
+    dic ["country"] = video ["country"]
 
-    lt.addLast(catalog['videos'], video)
+    lt.addLast(catalog['videos'], dic)
 
 
 
 def addCategory(catalog, category):
 
-    lt.addLast(catalog['id_category'], category)
+    lista = category["id\tname"].split()
+
+    info = {}
+    info ["id"] = int (lista [0])
+
+    info ["category"] = " ".join(lista[1:len(lista)])
+
+    lt.addLast(catalog['id_category'], info)
 
   
 # Funciones para creacion de datos
@@ -77,13 +98,34 @@ def crearSubList(lista, tamanhoMuestra):
 
    return lt.subList(lista, 1, tamanhoMuestra)
 
+def consultar_id(lista, categoria):
 
+    id = -1
+
+    for pos in range(lt.size(lista) + 1):
+        elemento = lt.getElement(lista, pos)
+
+        if elemento["category"] == categoria:
+            id = elemento["id"]
+            pos = lt.size(lista) + 1
+
+    return id
+        
+def filtrar_req1(lista, sublista, id, pais):
+
+    for pos in range(lt.size(lista) + 1):
+        elemento = lt.getElement(lista, pos)
+
+        if (elemento ["country"] == pais) and (elemento ["category_id"] == id): lt.addLast(sublista, elemento)
+    
+    quickSort(sublista, cmpVideosByViewsMayor)
+    
 # Funciones utilizadas para comparar elementos dentro de una lista
 
 def cmpVideosByViews(video1, video2):
 
     valor= None
-    if int(video1["views"]) < int(video2["views"]):
+    if video1["views"] < video2["views"]:
         valor= True
     
     else:
@@ -91,13 +133,23 @@ def cmpVideosByViews(video1, video2):
 
     return valor
 
+def cmpVideosByViewsMayor(video1, video2):
+
+    valor= None
+    if video1["views"] > video2["views"]:
+        valor= True
+    
+    else:
+        valor= False
+
+    return valor
 # Funciones de ordenamiento
 
-def insertionSort(sublista):
+def insertionSort(sublista, cmpfunction):
 
     startTime= time.process_time()
     
-    ia.sort(sublista, cmpVideosByViews)
+    ia.sort(sublista, cmpfunction)
 
     stopTime= time.process_time()
 
@@ -105,11 +157,11 @@ def insertionSort(sublista):
 
     return totalTime_msc
 
-def selectionSort(sublista):
+def selectionSort(sublista, cmpfunction):
 
     startTime= time.process_time()
 
-    sa.sort(sublista, cmpVideosByViews)
+    sa.sort(sublista, cmpfunction)
     
     stopTime= time.process_time()
 
@@ -117,11 +169,11 @@ def selectionSort(sublista):
 
     return totalTime_msc
 
-def shellSort(sublista):
+def shellSort(sublista, cmpfunction):
 
     startTime= time.process_time()
 
-    sha.sort(sublista, cmpVideosByViews)
+    sha.sort(sublista, cmpfunction)
 
     stopTime= time.process_time()
 
@@ -129,11 +181,11 @@ def shellSort(sublista):
 
     return totalTime_msc
 
-def quickSort(sublista):
+def quickSort(sublista, cmpfunction):
 
     startTime= time.process_time()
 
-    qk.sort(sublista, cmpVideosByViews)
+    qk.sort(sublista, cmpfunction)
 
     stopTime= time.process_time()
 
@@ -142,11 +194,11 @@ def quickSort(sublista):
     return totalTime_msc
 
 
-def mergeSort(sublista):
+def mergeSort(sublista, cmpfunction):
 
     startTime= time.process_time()
 
-    mg.sort(sublista, cmpVideosByViews)
+    mg.sort(sublista, cmpfunction)
 
     stopTime= time.process_time()
 
