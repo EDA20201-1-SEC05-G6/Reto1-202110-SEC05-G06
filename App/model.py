@@ -110,7 +110,7 @@ def consultar_id(lista, categoria):
             pos = lt.size(lista) + 1
 
     return id
-        
+
 def filtrar_req1(lista, sublista, id, pais):
 
     for pos in range(1, lt.size(lista) + 1):
@@ -148,7 +148,7 @@ def filtrar_req2(lista, sublista, pais):
 
             video = (elemento["title"], elemento["channel_title"], elemento["country"])
             id = elemento["video_id"]
-            fechas = []
+            fechas = [elemento["trending_date"]]
             diastrending = 1 
 
         elif elemento["trending_date"] not in fechas:
@@ -158,14 +158,44 @@ def filtrar_req2(lista, sublista, pais):
 
     return (videoMastrending, masDiastrending)
 
+def filtrar_req3(lista, sublista, id, categoria):
 
-            
+    for pos in range(1, lt.size(lista) + 1):
+        elemento = lt.getElement(lista, pos)
 
-    
+        if elemento ["category_id"] == id: lt.addLast(sublista, elemento)
 
+    quickSort(sublista, cmpVideosByID)
 
+    fechas= []
+    ID= None
+    masDiastrending = 0
+    diastrending = 0
+    video = None
+    videoMastrending = None
 
-    
+    for pos in range(1, lt.size(sublista) + 1):
+        elemento = lt.getElement(sublista, pos)
+
+        if ID != elemento["video_id"]:
+
+            if diastrending > masDiastrending:
+                videoMastrending = video
+                masDiastrending = diastrending
+ 
+
+            video = (elemento["title"], elemento["channel_title"], elemento["category_id"])
+            ID = elemento["video_id"]
+            fechas = [elemento["trending_date"]]
+            diastrending = 1 
+
+        elif elemento["trending_date"] not in fechas:
+
+            fechas.append(elemento["trending_date"])
+            diastrending += 1
+
+    return (videoMastrending, masDiastrending)
+
 # Funciones utilizadas para comparar elementos dentro de una lista
 
 def cmpVideosByViews(video1, video2):
@@ -262,5 +292,4 @@ def mergeSort(sublista, cmpfunction):
     totalTime_msc= (stopTime - startTime) * 1000
 
     return totalTime_msc
-
 

@@ -38,8 +38,8 @@ def printMenu():
     print("Bienvenido")
     print("1- Cargar información en el catálogo")
     print("2- Consultar videos con mas views en un país correspondientes a una categoría")
-    print("3- Consultar el video que más dias estuvo trending en un país")
-    print("4- Requerimiento 4")
+    print("3- Consultar el video que más días estuvo trending en un país")
+    print("4- Consultar el video que más días estuvo trending en una categoría")
     print("5- Requerimiento 5")
     print("0- Salir")
 
@@ -72,6 +72,10 @@ def filtrar_req1(lista, sublista, id, pais):
 def filtrar_req2(lista, sublista, pais):
     
     return controller.filtrar_req2(lista, sublista, pais)
+
+def filtrar_req3(lista, sublista, id, categoria):
+
+    return controller.filtrar_req3(lista, sublista, id, categoria)
 
 catalog = None
 
@@ -183,7 +187,7 @@ while True:
         lista = catalog["videos"]
         sublista = lt.newList(datastructure="ARRAY_LIST")
 
-        pais = input("Ingrese el país que desea consultar: ")
+        pais = input("Ingrese el país que desea consultar-> ")
 
         video = filtrar_req2(lista, sublista, pais)
 
@@ -191,11 +195,23 @@ while True:
         print("channel title: " + str(video[0][0]))
         print("country: " + str(video[0][2]))
         print("trending days: " + str(video[1]))
-
-
-
     
-        
+    elif int(inputs[0]) == 4:
+
+        lista = catalog["videos"]
+        sublista = lt.newList(datastructure="ARRAY_LIST")
+
+        categoria = input("Ingrese la categoría que desea consultar-> ")
+
+        id = consultar_id(catalog["id_category"], categoria)
+        if id == -1: print("Por favor ingrese una categoría válida")
+        else:
+            video = filtrar_req3(lista, sublista, id, categoria)
+
+            print("\n\ntitle: " + str(video[0][0]))
+            print("channel title: " + str(video[0][0]))
+            print("category id: " + str(video[0][2]))
+            print("trending days: " + str(video[1]))
 
     else: 
         sys.exit(0)

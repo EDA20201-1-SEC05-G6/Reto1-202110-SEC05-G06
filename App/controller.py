@@ -108,3 +108,7 @@ def filtrar_req1(lista, sublista, id, pais):
 def filtrar_req2(lista, sublista, pais):
     
     return model.filtrar_req2(lista, sublista, pais)
+
+def filtrar_req3(lista, sublista, id, categoria):
+
+    return model.filtrar_req3(lista, sublista, id, categoria)
