@@ -113,12 +113,23 @@ def consultar_id(lista, categoria):
         
 def filtrar_req1(lista, sublista, id, pais):
 
-    for pos in range(lt.size(lista) + 1):
+    for pos in range(1, lt.size(lista) + 1):
         elemento = lt.getElement(lista, pos)
 
         if (elemento ["country"] == pais) and (elemento ["category_id"] == id): lt.addLast(sublista, elemento)
     
     quickSort(sublista, cmpVideosByViewsMayor)
+
+def filtrar_req2(sublista, pais):
+
+     for pos in range(1, lt.size(sublista) + 1):
+        if elemento ["country"] == pais: lt.addLast(sublista, elemento)
+
+        quickSort(sublista, cmpVideosByID)
+    
+
+
+
     
 # Funciones utilizadas para comparar elementos dentro de una lista
 
@@ -137,6 +148,17 @@ def cmpVideosByViewsMayor(video1, video2):
 
     valor= None
     if video1["views"] > video2["views"]:
+        valor= True
+    
+    else:
+        valor= False
+
+    return valor
+
+def cmpVideosByID(video1, video2):
+
+    valor= None
+    if video1["video_id"] > video2["video_id"]:
         valor= True
     
     else:

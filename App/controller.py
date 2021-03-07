@@ -104,3 +104,7 @@ def consultar_id(lista, categoria):
 def filtrar_req1(lista, sublista, id, pais):
 
     return model.filtrar_req1(lista,sublista, id, pais)
+
+def filtrar_req2(sublista, pais):
+    
+    return model.filtrar_req2(sublista, pais)

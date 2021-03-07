@@ -38,7 +38,7 @@ def printMenu():
     print("Bienvenido")
     print("1- Cargar información en el catálogo")
     print("2- Consultar videos con mas views en un país correspondientes a una categoría")
-    print("3- Requerimiento 2")
+    print("3- Consultar el video que más dias estuvo trending en un país")
     print("4- Requerimiento 4")
     print("5- Requerimiento 5")
     print("0- Salir")
@@ -68,6 +68,10 @@ def consultar_id(lista, categoria):
 def filtrar_req1(lista, sublista, id, pais):
 
     return controller.filtrar_req1(lista, sublista, id, pais)
+
+def filtrar_req2(sublista, pais):
+    
+    return controller.filtrar_req2(sublista, pais)
 
 catalog = None
 
@@ -173,6 +177,25 @@ while True:
                        impresos.append(elemento["title"])
                        num += 1
                    pos += 1
+
+    elif int(inputs[0]) == 3:
+
+        sublista = lt.newList(datastructure="ARRAY_LIST")
+        pais = input("Ingrese el país que desea consultar: ")
+        filtrar_req2(sublista, pais)
+        print(sublista)
+
+        for pos in range(1, lt.size(sublista) + 1):
+            elemento = lt.getElement(sublista, pos)
+            print("\n\nvideo " + str(num))
+            print("trending date: " + str(elemento["trending_date"]))
+            print("title: " + elemento["title"])
+            print("channel title: " + elemento["channel_title"])
+            print("publish time: " + str (elemento["publish_time"]))
+            print("views: " + str(elemento["views"]))
+            print("likes: " + str(elemento["likes"]))
+            print("dislikes: " + str(elemento["dislikes"]))
+        
 
     else: 
         sys.exit(0)
