@@ -120,12 +120,47 @@ def filtrar_req1(lista, sublista, id, pais):
     
     quickSort(sublista, cmpVideosByViewsMayor)
 
-def filtrar_req2(sublista, pais):
+def filtrar_req2(lista, sublista, pais):
 
-     for pos in range(1, lt.size(sublista) + 1):
+    for pos in range(1, lt.size(lista) + 1):
+        elemento = lt.getElement(lista, pos)
+
         if elemento ["country"] == pais: lt.addLast(sublista, elemento)
 
-        quickSort(sublista, cmpVideosByID)
+    quickSort(sublista, cmpVideosByID)
+
+    fechas= []
+    id= None
+    masDiastrending = 0
+    diastrending = 0
+    video = None
+    videoMastrending = None
+
+    for pos in range(1, lt.size(sublista) + 1):
+        elemento = lt.getElement(sublista, pos)
+
+        if id != elemento["video_id"]:
+
+            if diastrending > masDiastrending:
+                videoMastrending = video
+                masDiastrending = diastrending
+ 
+
+            video = (elemento["title"], elemento["channel_title"], elemento["country"])
+            id = elemento["video_id"]
+            fechas = []
+            diastrending = 1 
+
+        elif elemento["trending_date"] not in fechas:
+
+            fechas.append(elemento["trending_date"])
+            diastrending += 1
+
+    return (videoMastrending, masDiastrending)
+
+
+            
+
     
 
 

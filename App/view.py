@@ -69,9 +69,9 @@ def filtrar_req1(lista, sublista, id, pais):
 
     return controller.filtrar_req1(lista, sublista, id, pais)
 
-def filtrar_req2(sublista, pais):
+def filtrar_req2(lista, sublista, pais):
     
-    return controller.filtrar_req2(sublista, pais)
+    return controller.filtrar_req2(lista, sublista, pais)
 
 catalog = None
 
@@ -163,7 +163,7 @@ while True:
                impresos = []
                pos = 1
                num = 1
-               while num in range (1, num_videos + 1) and lt.getElement(sublista, pos) != None:
+               while num in range (1, num_videos + 1) and pos in range (1, lt.size(sublista) + 1):
                    elemento = lt.getElement(sublista, pos)
                    if elemento["title"] not in impresos:
                        print("\n\nvideo " + str(num))
@@ -179,26 +179,25 @@ while True:
                    pos += 1
 
     elif int(inputs[0]) == 3:
-
+        
+        lista = catalog["videos"]
         sublista = lt.newList(datastructure="ARRAY_LIST")
-        pais = input("Ingrese el país que desea consultar: ")
-        filtrar_req2(sublista, pais)
-        print(sublista)
 
-        for pos in range(1, lt.size(sublista) + 1):
-            elemento = lt.getElement(sublista, pos)
-            print("\n\nvideo " + str(num))
-            print("trending date: " + str(elemento["trending_date"]))
-            print("title: " + elemento["title"])
-            print("channel title: " + elemento["channel_title"])
-            print("publish time: " + str (elemento["publish_time"]))
-            print("views: " + str(elemento["views"]))
-            print("likes: " + str(elemento["likes"]))
-            print("dislikes: " + str(elemento["dislikes"]))
+        pais = input("Ingrese el país que desea consultar: ")
+
+        video = filtrar_req2(lista, sublista, pais)
+
+        print("\n\ntitle: " + str(video[0][0]))
+        print("channel title: " + str(video[0][0]))
+        print("country: " + str(video[0][2]))
+        print("trending days: " + str(video[1]))
+
+
+
+    
         
 
     else: 
         sys.exit(0)
 sys.exit(0)
 
-#REVISAR PUBLISH TIME REQ 1!!!!
