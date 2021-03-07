@@ -74,9 +74,9 @@ def filtrar_req2(lista, sublista, pais):
     
     return controller.filtrar_req2(lista, sublista, pais)
 
-def filtrar_req3(lista, sublista, id, categoria):
+def filtrar_req3(lista, sublista, id):
 
-    return controller.filtrar_req3(lista, sublista, id, categoria)
+    return controller.filtrar_req3(lista, sublista, id)
 
 def filtrar_req4(lista, sublista, tag, pais):
 
@@ -212,7 +212,7 @@ while True:
         id = consultar_id(catalog["id_category"], categoria)
         if id == -1: print("Por favor ingrese una categoría válida")
         else:
-            video = filtrar_req3(lista, sublista, id, categoria)
+            video = filtrar_req3(lista, sublista, id)
 
             print("\n\ntitle: " + str(video[0][0]))
             print("channel title: " + str(video[0][0]))
@@ -224,12 +224,12 @@ while True:
         lista = catalog["videos"]
         sublista = lt.newList(datastructure="ARRAY_LIST")
 
-        tag = input("Ingrese el tag que desea consultar-> ")
-        pais = input("Ingrese el país que desea consultar-> ")
         num_videos = int(input("Ingrese el numero de videos que desea consultar-> "))
+        pais = input("Ingrese el país que desea consultar-> ")
+        tag = input("Ingrese el tag que desea consultar-> ")
 
         filtrar_req4(lista, sublista, tag, pais)
-        
+
         impresos = []
         pos = 1
         num = 1

@@ -158,14 +158,14 @@ def filtrar_req2(lista, sublista, pais):
 
     return (videoMastrending, masDiastrending)
 
-def filtrar_req3(lista, sublista, id, categoria):
+def filtrar_req3(lista, sublista, id):
 
     for pos in range(1, lt.size(lista) + 1):
         elemento = lt.getElement(lista, pos)
 
         if elemento ["category_id"] == id: lt.addLast(sublista, elemento)
 
-    quickSort(sublista, cmpVideosByID)
+    mergeSort(sublista, cmpVideosByID)
 
     fechas= []
     ID= None
@@ -196,6 +196,15 @@ def filtrar_req3(lista, sublista, id, categoria):
 
     return (videoMastrending, masDiastrending)
 
+def filtrar_req4(lista, sublista, tag, pais):
+    for pos in range(1, lt.size(lista) + 1):
+        elemento = lt.getElement(lista, pos)
+
+        if (tag in elemento ["tags"]) and (pais == elemento ["country"]): lt.addLast(sublista, elemento)
+
+    quickSort(sublista, cmpVideosByLikes)
+    
+
 # Funciones utilizadas para comparar elementos dentro de una lista
 
 def cmpVideosByViews(video1, video2):
@@ -224,6 +233,17 @@ def cmpVideosByID(video1, video2):
 
     valor= None
     if video1["video_id"] > video2["video_id"]:
+        valor= True
+    
+    else:
+        valor= False
+
+    return valor
+
+def cmpVideosByLikes(video1, video2):
+
+    valor= None
+    if video1["likes"] > video2["likes"]:
         valor= True
     
     else:
