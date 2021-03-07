@@ -23,6 +23,7 @@
 import config as cf
 import sys
 import controller
+import time
 from DISClib.ADT import list as lt
 assert cf
 
@@ -40,7 +41,7 @@ def printMenu():
     print("2- Consultar videos con mas views en un país correspondientes a una categoría")
     print("3- Consultar el video que más días estuvo trending en un país")
     print("4- Consultar el video que más días estuvo trending en una categoría")
-    print("5- Requerimiento 5")
+    print("5- Consultar los videos con un tag especifico que tienen más likes")
     print("0- Salir")
 
 
@@ -76,6 +77,10 @@ def filtrar_req2(lista, sublista, pais):
 def filtrar_req3(lista, sublista, id, categoria):
 
     return controller.filtrar_req3(lista, sublista, id, categoria)
+
+def filtrar_req4(lista, sublista, tag, pais):
+
+    return controller.filtrar_req4(lista, sublista, tag, pais)
 
 catalog = None
 
@@ -157,12 +162,14 @@ while True:
        if num_videos > lt.size(lista): print("El número ingresado excede el número total de videos")
         
        else:
+
            categoria = input ("Ingrese la categoría que quiere consultar-> ")
            id = consultar_id(catalog["id_category"], categoria)
            if id == -1: print("Por favor ingrese una categoría válida")
            else:
                pais = input("Ingrese el país que quiere consultar-> ")
                filtrar_req1(lista, sublista, id, pais)
+               print(totalTime_msc)
                
                impresos = []
                pos = 1
@@ -188,7 +195,6 @@ while True:
         sublista = lt.newList(datastructure="ARRAY_LIST")
 
         pais = input("Ingrese el país que desea consultar-> ")
-
         video = filtrar_req2(lista, sublista, pais)
 
         print("\n\ntitle: " + str(video[0][0]))
@@ -213,7 +219,38 @@ while True:
             print("category id: " + str(video[0][2]))
             print("trending days: " + str(video[1]))
 
+    elif int(inputs[0]) == 5:
+
+        lista = catalog["videos"]
+        sublista = lt.newList(datastructure="ARRAY_LIST")
+
+        tag = input("Ingrese el tag que desea consultar-> ")
+        pais = input("Ingrese el país que desea consultar-> ")
+        num_videos = int(input("Ingrese el numero de videos que desea consultar-> "))
+
+        filtrar_req4(lista, sublista, tag, pais)
+        
+        impresos = []
+        pos = 1
+        num = 1
+        while num in range (1, num_videos + 1) and pos in range (1, lt.size(sublista) + 1):
+            elemento = lt.getElement(sublista, pos)
+            if elemento["title"] not in impresos:
+                print("\n\nvideo " + str(num))
+                print("title: " + elemento["title"])
+                print("channel title: " + elemento["channel_title"])
+                print("publish time: " + str (elemento["publish_time"]))
+                print("views: " + str(elemento["views"]))
+                print("likes: " + str(elemento["likes"]))
+                print("dislikes: " + str(elemento["dislikes"]))
+                print("tags: " + elemento["tags"])
+                impresos.append(elemento["title"])
+                num += 1
+            pos += 1
+
+
     else: 
         sys.exit(0)
 sys.exit(0)
 
+#Agregar mensaje cuando el pais no tiene videos
