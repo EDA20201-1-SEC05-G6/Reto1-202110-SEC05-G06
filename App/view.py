@@ -169,24 +169,17 @@ while True:
            else:
                pais = input("Ingrese el país que quiere consultar-> ")
                filtrar_req1(lista, sublista, id, pais)
-               
-               impresos = lt.newList(datastructure="ARRAY_LIST")
-               pos = 1
-               num = 1
-               while num in range (1, num_videos + 1) and pos in range (1, lt.size(sublista) + 1):
+               for pos in range(1, num_videos + 1):
                    elemento = lt.getElement(sublista, pos)
-                   if lt.isPresent(impresos, elemento["title"]) == 0:
-                       print("\n\nvideo " + str(num))
-                       print("trending date: " + str(elemento["trending_date"]))
-                       print("title: " + elemento["title"])
-                       print("channel title: " + elemento["channel_title"])
-                       print("publish time: " + str (elemento["publish_time"]))
-                       print("views: " + str(elemento["views"]))
-                       print("likes: " + str(elemento["likes"]))
-                       print("dislikes: " + str(elemento["dislikes"]))
-                       lt.addLast(impresos, elemento["title"])
-                       num += 1
-                   pos += 1
+
+                   print("\n\nvideo " + str(pos))
+                   print("trending date: " + str(elemento["trending_date"]))
+                   print("title: " + elemento["title"])
+                   print("channel title: " + elemento["channel_title"])
+                   print("publish time: " + str (elemento["publish_time"]))
+                   print("views: " + str(elemento["views"]))
+                   print("likes: " + str(elemento["likes"]))
+                   print("dislikes: " + str(elemento["dislikes"]))
 
     elif int(inputs[0]) == 3:
         
