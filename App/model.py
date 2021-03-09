@@ -129,7 +129,7 @@ def filtrar_req2(lista, sublista, pais):
 
     quickSort(sublista, cmpVideosByID)
 
-    fechas= []
+    fechas= lt.newList(datastructure="ARRAY_LIST")
     id= None
     masDiastrending = 0
     diastrending = 0
@@ -148,12 +148,13 @@ def filtrar_req2(lista, sublista, pais):
 
             video = (elemento["title"], elemento["channel_title"], elemento["country"])
             id = elemento["video_id"]
-            fechas = [elemento["trending_date"]]
+            fechas = lt.newList(datastructure="ARRAY_LIST")
+            lt.addLast(fechas, elemento["trending_date"])
             diastrending = 1 
 
-        elif elemento["trending_date"] not in fechas:
+        elif lt.isPresent(fechas, elemento["trending_date"]) == 0:
 
-            fechas.append(elemento["trending_date"])
+            lt.addLast(fechas, elemento["trending_date"])
             diastrending += 1
 
     return (videoMastrending, masDiastrending)
@@ -167,7 +168,7 @@ def filtrar_req3(lista, sublista, id):
 
     mergeSort(sublista, cmpVideosByID)
 
-    fechas= []
+    fechas= lt.newList(datastructure="ARRAY_LIST")
     ID= None
     masDiastrending = 0
     diastrending = 0
@@ -186,12 +187,13 @@ def filtrar_req3(lista, sublista, id):
 
             video = (elemento["title"], elemento["channel_title"], elemento["category_id"])
             ID = elemento["video_id"]
-            fechas = [elemento["trending_date"]]
+            fechas = lt.newList(datastructure="ARRAY_LIST")
+            lt.addLast(fechas, elemento["trending_date"])
             diastrending = 1 
 
-        elif elemento["trending_date"] not in fechas:
+        elif lt.isPresent(fechas, elemento["trending_date"]) == 0:
 
-            fechas.append(elemento["trending_date"])
+            lt.addLast(fechas, elemento["trending_date"])
             diastrending += 1
 
     return (videoMastrending, masDiastrending)
@@ -253,63 +255,21 @@ def cmpVideosByLikes(video1, video2):
 # Funciones de ordenamiento
 
 def insertionSort(sublista, cmpfunction):
-
-    startTime= time.process_time()
     
     ia.sort(sublista, cmpfunction)
 
-    stopTime= time.process_time()
-
-    totalTime_msc= (stopTime - startTime) * 1000
-
-    return totalTime_msc
-
 def selectionSort(sublista, cmpfunction):
 
-    startTime= time.process_time()
-
     sa.sort(sublista, cmpfunction)
-    
-    stopTime= time.process_time()
-
-    totalTime_msc= (stopTime - startTime) * 1000
-
-    return totalTime_msc
 
 def shellSort(sublista, cmpfunction):
 
-    startTime= time.process_time()
-
     sha.sort(sublista, cmpfunction)
-
-    stopTime= time.process_time()
-
-    totalTime_msc= (stopTime - startTime) * 1000
-
-    return totalTime_msc
 
 def quickSort(sublista, cmpfunction):
 
-    startTime= time.process_time()
-
     qk.sort(sublista, cmpfunction)
-
-    stopTime= time.process_time()
-
-    totalTime_msc= (stopTime - startTime) * 1000
-
-    return totalTime_msc
-
 
 def mergeSort(sublista, cmpfunction):
 
-    startTime= time.process_time()
-
     mg.sort(sublista, cmpfunction)
-
-    stopTime= time.process_time()
-
-    totalTime_msc= (stopTime - startTime) * 1000
-
-    return totalTime_msc
-

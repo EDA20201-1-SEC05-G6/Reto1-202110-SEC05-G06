@@ -36,7 +36,7 @@ operación solicitada
 """
 
 def printMenu():
-    print("Bienvenido")
+    print("\nBienvenido")
     print("1- Cargar información en el catálogo")
     print("2- Consultar videos con mas views en un país correspondientes a una categoría")
     print("3- Consultar el video que más días estuvo trending en un país")
@@ -169,14 +169,13 @@ while True:
            else:
                pais = input("Ingrese el país que quiere consultar-> ")
                filtrar_req1(lista, sublista, id, pais)
-               print(totalTime_msc)
                
-               impresos = []
+               impresos = lt.newList(datastructure="ARRAY_LIST")
                pos = 1
                num = 1
                while num in range (1, num_videos + 1) and pos in range (1, lt.size(sublista) + 1):
                    elemento = lt.getElement(sublista, pos)
-                   if elemento["title"] not in impresos:
+                   if lt.isPresent(impresos, elemento["title"]) == 0:
                        print("\n\nvideo " + str(num))
                        print("trending date: " + str(elemento["trending_date"]))
                        print("title: " + elemento["title"])
@@ -185,7 +184,7 @@ while True:
                        print("views: " + str(elemento["views"]))
                        print("likes: " + str(elemento["likes"]))
                        print("dislikes: " + str(elemento["dislikes"]))
-                       impresos.append(elemento["title"])
+                       lt.addLast(impresos, elemento["title"])
                        num += 1
                    pos += 1
 
@@ -230,12 +229,12 @@ while True:
 
         filtrar_req4(lista, sublista, tag, pais)
 
-        impresos = []
+        impresos = lt.newList(datastructure="ARRAY_LIST")
         pos = 1
         num = 1
         while num in range (1, num_videos + 1) and pos in range (1, lt.size(sublista) + 1):
             elemento = lt.getElement(sublista, pos)
-            if elemento["title"] not in impresos:
+            if lt.isPresent(impresos, elemento["title"]) == 0:
                 print("\n\nvideo " + str(num))
                 print("title: " + elemento["title"])
                 print("channel title: " + elemento["channel_title"])
@@ -244,7 +243,7 @@ while True:
                 print("likes: " + str(elemento["likes"]))
                 print("dislikes: " + str(elemento["dislikes"]))
                 print("tags: " + elemento["tags"])
-                impresos.append(elemento["title"])
+                lt.addLast(impresos, elemento["title"])
                 num += 1
             pos += 1
 
@@ -252,5 +251,3 @@ while True:
     else: 
         sys.exit(0)
 sys.exit(0)
-
-#Agregar mensaje cuando el pais no tiene videos
